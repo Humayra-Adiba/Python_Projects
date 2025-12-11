@@ -1,9 +1,11 @@
 import random
+import time
 
-Operators = ["+", "-","/","*"]
+Operators = ["+", "-","*"]
 Min_Operand = 4
-Max_Operand =111
-Total_Problems = 10
+Max_Operand =99
+Total_Problems = 2
+
 
 def generate_problem():
     left = random.randint(Min_Operand, Max_Operand)
@@ -15,11 +17,23 @@ def generate_problem():
     
     return expr, answer
 
+wrong = 0
+input("Press enter to start!")
+print("----------------------")
+
+start_time = time.time()
+
 for i in range(Total_Problems):
     expr, answer =generate_problem()
     while True:
         guess = input(" Problem #" +str(i+1)+ ": "+expr + " = ")
         if guess == str(answer):
             break
+        wrong += 1
         
-    
+
+end_time = time.time()
+total_time = round(end_time - start_time,3)
+
+print("----------------------")
+print("Nice work! You finished the abacuses in", total_time, "seconds!")    
